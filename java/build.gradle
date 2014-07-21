@@ -1,0 +1,31 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.6
+group = 'it.tug'
+version = '0.1'
+
+jar { 
+    manifest { 
+        def manifestClasspath = configurations.runtime.collect { it.getName() }.join(',') 
+        attributes 'Class-Path': manifestClasspath 
+    } 
+} 
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'SinglePath', 'Implementation-Version': '0.1', 'Main-Class': 'it.tug.Main'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.mockito:mockito-all:1.9.5'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
