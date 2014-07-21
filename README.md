@@ -3,11 +3,15 @@ SinglePath
 
 Can you get rid of all the IFs?
 
-The game is: submit a snippet of code containing an ```if–else``` construct (or any other statements causing alternative paths of execution) 
+The game
+---------
+Submit a snippet of code containing an ```if–else``` construct (or any other statements causing alternative paths of execution) 
 and for which you believe the elimination of the conditional statement is impractical or too hard.
 That is: a snippet of code that, in someone's opinion, *must* have an ```if-else```.
 
-The goal is: collectively refactor the code, with the manifest and deliberate goal of eliminating the conditional path.
+The goal
+--------
+Collectively refactor the code, with the manifest and deliberate goal of eliminating the conditional path.
 
 Then, reflect on the result. Was it worth the effort?
 
