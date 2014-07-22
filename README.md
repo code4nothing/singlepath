@@ -23,6 +23,9 @@ Use the language you prefer: Java, C#, Python, what ever you want.
 Just provide enough tests in order to make your intents clear.
 
 
+## How can I contribute?
+Submit a new Quiz.
+Or, propose a solution to one of the open Quizzes.
 
 ##Java
 
