@@ -10,10 +10,10 @@ public class Formatter {
 
     public String doTheJob(String theInput) {
         String response = service.askForPermission();
-        switch (response) {
-            case "FAIL":
+        switch (ResponseType.getType(response)) {
+            case FAIL:
                 return "error";
-            case "OK":
+            case OK:
                 return String.format("%s%s", theInput, theInput);
             default:
                 return null;
