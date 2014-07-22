@@ -4,3 +4,4 @@ java/.classpath
 java/.project
 java/.settings
 *.class
+java/.gradle
