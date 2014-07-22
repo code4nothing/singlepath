@@ -4,3 +4,10 @@ java/.classpath
 java/.project
 java/.settings
 *.class
+
+dotnet/TestResult.xml
+dotnet/src/**/Bin/**
+dotnet/src/**/Obj/**
+dotnet/lib
+dotnet/*.csproj.user
+dotnet/src/*.suo
