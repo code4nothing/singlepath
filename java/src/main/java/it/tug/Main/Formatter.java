@@ -10,13 +10,11 @@ public class Formatter {
 
     public String doTheJob(String theInput) {
         String response = service.askForPermission();
-        switch (response) {
-            case "FAIL":
-                return "error";
-            case "OK":
-                return String.format("%s%s", theInput, theInput);
-            default:
-                return null;
+
+        try {
+            return Response.valueOf(response).getResponseValue(theInput);
+        } catch (IllegalArgumentException e) {
+            return null;
         }
     }
 }
