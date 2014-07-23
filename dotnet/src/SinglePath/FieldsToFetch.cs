@@ -1,23 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SinglePath
 {
 	public class FieldsToFetch
 	{
-		private HashSet<string> ensuredFieldNames;
-		private readonly HashSet<string> fieldsToFetch;
+		private readonly HashSet<string> _ensuredFieldNames;
+		private readonly HashSet<string> _fieldsToFetch;
 
-		public IEnumerable<string> Fields
+	    public FieldsToFetch()
+	    {
+            _fieldsToFetch = new HashSet<string>();
+            _ensuredFieldNames = new HashSet<string>();
+	    }
+
+	    public IEnumerable<string> Fields
 		{
 			get
 			{
-				HashSet<string> fieldsWeMustReturn = ensuredFieldNames == null
-														? new HashSet<string>()
-														: new HashSet<string>(ensuredFieldNames);
-				foreach (var fieldToReturn in GetFieldsToReturn())
+				HashSet<string> fieldsWeMustReturn = new HashSet<string>(_ensuredFieldNames);
+			    
+			    foreach (var fieldToReturn in GetFieldsToReturn())
 				{
 					fieldsWeMustReturn.Remove(fieldToReturn);
 					yield return fieldToReturn;
@@ -32,19 +34,12 @@ namespace SinglePath
 
 		private IEnumerable<string> GetFieldsToReturn()
 		{
-			if (fieldsToFetch == null)
-				yield break;
-			foreach (var field in fieldsToFetch)
-			{
-				yield return field;
-			}
+		    return _fieldsToFetch;
 		}
 
-		public void EnsureHasField(string ensuredFieldName)
+	    public void EnsureHasField(string ensuredFieldName)
 		{
-			if (ensuredFieldNames == null)
-				ensuredFieldNames = new HashSet<string>();
-			ensuredFieldNames.Add(ensuredFieldName);
+			_ensuredFieldNames.Add(ensuredFieldName);
 		}
 	}
 }
