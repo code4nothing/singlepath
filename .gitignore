@@ -3,6 +3,7 @@ java/build
 java/.classpath
 java/.project
 java/.settings
+java/.gradle
 *.class
 
 dotnet/TestResult.xml
