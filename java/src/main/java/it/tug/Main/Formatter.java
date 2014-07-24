@@ -1,22 +1,22 @@
 package it.tug.Main;
 
-public class Formatter {
+import java.util.concurrent.atomic.AtomicReference;
 
-    private Service service;
+public class Formatter {
+    private final Service service;    
 
     public Formatter(Service service) {
         this.service = service;
     }
 
     public String doTheJob(String theInput) {
-        String response = service.askForPermission();
-        switch (response) {
-            case "FAIL":
-                return "error";
-            case "OK":
-                return String.format("%s%s", theInput, theInput);
-            default:
-                return null;
-        }
+        AtomicReference<String> doTheJobResult = new AtomicReference<>();
+        
+        service
+          .askForPermission()
+          .onFail(() -> doTheJobResult.set("error"))
+          .onOk(() -> doTheJobResult.set(String.format("%s%s", theInput, theInput)));
+        
+        return doTheJobResult.get();
     }
 }
