@@ -1,5 +1,5 @@
 package it.tug.Main;
 
 public interface Service {
-    String askForPermission();
+  AskResult askForPermission();
 }
