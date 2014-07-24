@@ -1,5 +1,7 @@
 package it.tug.Main;
 
+import java.lang.reflect.*;
+
 public class Formatter {
 
     private Service service;
@@ -10,13 +12,23 @@ public class Formatter {
 
     public String doTheJob(String theInput) {
         String response = service.askForPermission();
-        switch (response) {
-            case "FAIL":
-                return "error";
-            case "OK":
-                return String.format("%s%s", theInput, theInput);
-            default:
-                return null;
+        String result;
+
+        try {
+          Method method = getClass().getDeclaredMethod(response.toLowerCase(), String.class);
+          result = (String)method.invoke(this, theInput);
         }
+        catch(Exception e){
+          result = null;
+        }
+        return result;
+    }
+
+    String fail(String theInput) {
+      return "error";
+    }
+
+    String ok(String theInput) {
+      return String.format("%s%s", theInput, theInput);
     }
 }
