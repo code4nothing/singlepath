@@ -19,31 +19,31 @@ public class FormatterTest {
         service = mock(Service.class);
         sut = new Formatter(service);
     }
-    
+
     @Test
-    public void shouldReturnAnErrorMessageIfServiceReturnsNull() {
+    public void shouldReturnAnErrorMessageIfServiceReturnsFail() {
         when(this.service.askForPermission()).thenReturn("FAIL");
-        
+
         String actual = sut.doTheJob("foo");
-        
+
         assertEquals("error", actual);
     }
 
     @Test
     public void shouldReturnAnTheStringDoubledIfServiceReturnsOK() {
         when(this.service.askForPermission()).thenReturn("OK");
-        
+
         String actual = sut.doTheJob("foobar");
-        
+
         assertEquals("foobarfoobar", actual);
     }
-    
+
     @Test
     public void shouldReturnNullIfServiceRepliesDifferentlyThanOKOrFAIL() {
         when(this.service.askForPermission()).thenReturn("luchino");
-        
+
         String actual = sut.doTheJob("foobar");
-        
+
         assertEquals(null, actual);
     }
 }
