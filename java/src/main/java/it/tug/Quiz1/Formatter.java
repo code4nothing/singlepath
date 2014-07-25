@@ -1,4 +1,4 @@
-package it.tug.Main;
+package it.tug.Quiz1;
 
 public class Formatter {
 
