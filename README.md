@@ -2,6 +2,7 @@
 
 Can you get rid of all the IFs?
 
+Checkout the [quizzes](https://github.com/code4nothing/singlepath/search?q=label%3Aquiz&ref=cmdform&type=Issues)!
 
 
 ## The game
