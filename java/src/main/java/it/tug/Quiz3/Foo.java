@@ -1,4 +1,4 @@
-package it.tug.Main.Quiz3;
+package it.tug.Quiz3;
 
 public class Foo {
 

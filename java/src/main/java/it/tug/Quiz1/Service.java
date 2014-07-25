@@ -1,4 +1,4 @@
-package it.tug.Main.Quiz1;
+package it.tug.Quiz1;
 
 public interface Service {
     String askForPermission();

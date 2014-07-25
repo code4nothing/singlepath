@@ -3,8 +3,8 @@ package it.tug.Quiz1;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import it.tug.Main.Quiz1.Formatter;
-import it.tug.Main.Quiz1.Service;
+import it.tug.Quiz1.Formatter;
+import it.tug.Quiz1.Service;
 
 import org.junit.Before;
 import org.junit.Test;
