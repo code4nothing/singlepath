@@ -1,10 +1,13 @@
 package it.tug.Main;
 
-import java.lang.reflect.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class Formatter {
 
-    private Service service;
+    private static final MethodReflector<Formatter> methodReflector = new MethodReflector<>(Formatter.class);
+
+    private final Service service;
 
     public Formatter(Service service) {
         this.service = service;
@@ -12,23 +15,25 @@ public class Formatter {
 
     public String doTheJob(String theInput) {
         String response = service.askForPermission();
-        String result;
 
         try {
-          Method method = getClass().getDeclaredMethod(response.toLowerCase(), String.class);
-          result = (String)method.invoke(this, theInput);
+            String methodName = response.toLowerCase();
+            Method method = methodReflector.getMethod(methodName);
+
+            return (String) method.invoke(this, theInput);
+        } catch (IllegalAccessException 
+                | IllegalArgumentException 
+                | InvocationTargetException 
+                | NoSuchMethodException ex) {
+            return null;
         }
-        catch(Exception e){
-          result = null;
-        }
-        return result;
     }
 
-    String fail(String theInput) {
-      return "error";
+    private String fail(String theInput) {
+        return "error";
     }
 
-    String ok(String theInput) {
-      return String.format("%s%s", theInput, theInput);
+    private String ok(String theInput) {
+        return String.format("%s%s", theInput, theInput);
     }
 }

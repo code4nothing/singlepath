@@ -37,6 +37,20 @@ public class FormatterTest {
 
         assertEquals("foobarfoobar", actual);
     }
+    
+    @Test
+    public void shouldReturnAnTheStringDoubledIfServiceReturnsOK_AndShouldWorkTwice() {
+        when(this.service.askForPermission()).thenReturn("OK");
+
+        String actual;
+        
+        actual = sut.doTheJob("foobar");
+        actual = sut.doTheJob(actual);
+        
+        assertEquals("foobarfoobarfoobarfoobar", actual);
+        
+        
+    }
 
     @Test
     public void shouldReturnNullIfServiceRepliesDifferentlyThanOKOrFAIL() {
